@@ -28,12 +28,11 @@ function NearbyJobs() {
         {isLoading ? (
           <ActivityIndicator size="large" color={COLORS.primary} />
         ) : hasError ? <Text>Something went wrong</Text> : (
-          data?.map((item) => (
+          data?.map((job) => (
             <NearbyJobCard
-              key={`nearby-job-${item?.job_id}`}
-              job={item}
-              handleNavigate={() => router.push(`/job-details/${item?.job_id}`)}
-
+              key={`nearby-job-${job?.job_id}`}
+              job={job}
+              handleNavigate={() => router.push(`/job-details/${job.job_id}`)}
             />
           ))
         )}
