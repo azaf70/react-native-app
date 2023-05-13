@@ -19,6 +19,8 @@
         "react-native"
     ],
     "rules": {
-        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
-    }
+            "react/react-in-jsx-scope": "off",
+            "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }] //should add ".ts" if typescript project
+        }
+
 }
