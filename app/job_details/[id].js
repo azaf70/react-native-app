@@ -2,7 +2,7 @@ import {
   ActivityIndicator,
   RefreshControl, SafeAreaView, ScrollView, Text, View,
 } from 'react-native';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Stack, useRouter, useSearchParams } from 'expo-router';
 import useFetch from '../../hook/useFetch';
 import { COLORS, icons, SIZES } from '../../constants';
@@ -20,7 +20,11 @@ function JobDetails() {
     job_id: params.id,
   });
   const [refreshing, setRefreshing] = React.useState(false);
-  const refresh = () => {};
+  const refresh = useCallback(() => {
+    setRefreshing(true);
+    refetch();
+    setRefreshing(false);
+  });
   const tabs = ['About', 'Qualifications', 'Responsibilities'];
   const [activeTab, setActiveTab] = React.useState(tabs[0]);
   const displayTabContent = (tab, job) => {

@@ -17,6 +17,7 @@ import {
 function Home() {
   const router = useRouter();
   const [selectedTab, setSelectedTab] = useState(0);
+  const [searchTerm, setSearchTerm] = useState('');
 
   return (
     <SafeAreaView style={{
@@ -52,7 +53,13 @@ function Home() {
           backgroundColor: COLORS.lightWhite,
         }}
         >
-          <Welcome />
+          <Welcome
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            handleSearch={() => {
+              router.push(`/search/${searchTerm}`);
+            }}
+          />
           <Popularjobs />
           <Nearbyjobs />
         </View>
